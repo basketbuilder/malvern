@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ProQuote - Optical Dispensing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="main no-print">
+        <div class="tabs">
+            <button id="tab0" class="tab active" onclick="switchPair(0)">Pair One</button>
+            <button id="tab1" class="tab locked" onclick="switchPair(1)">Pair Two</button>
+        </div>
+
+        <div class="card">
+            <h2>1. Frame Price</h2>
+            <div class="selection-grid" id="frame-list"></div>
+        </div>
+        
+        <div class="card">
+            <h2>2. Lenses</h2>
+            <div class="group-title">Single Vision & Boost</div>
+            <div class="selection-grid" id="lens-sv"></div>
+            
+            <div class="group-title">Varifocal</div>
+            <div class="sub-group-title">Specialist</div>
+            <div class="selection-grid" id="lens-var-spec"></div>
+            <div class="sub-group-title">Core</div>
+            <div class="selection-grid" id="lens-var-core"></div>
+
+            <div class="group-title">Occupational / Bifocal</div>
+            <div class="selection-grid" id="lens-mixed"></div>
+        </div>
+
+        <div class="card">
+            <h2>3. Treatments & Thinning</h2>
+            <div class="group-title">Anti-Reflective & UV</div>
+            <div class="selection-grid" id="treat-main"></div>
+            <div class="group-title">Thinning Options</div>
+            <div class="selection-grid" id="treat-thin"></div>
+        </div>
+    </div>
+
+    <div class="summary-sticky">
+        <div class="card">
+            <div id="timestamp-display" style="font-size:0.7rem; color:#94a3b8; text-align:right; margin-bottom:8px;"></div>
+            <input type="text" id="cust-name" class="input-field" placeholder="Customer Name">
+            
+            <div id="validation-box"></div>
+
+            <div class="no-print">
+                <p style="font-size:0.75rem; font-weight:bold; margin-bottom:5px;">Offers</p>
+                <select id="offer-selector" onchange="renderAll()" class="input-field">
+                    <option value="none">No Offer</option>
+                    <option value="unlimited">NHS Unlimited Choice</option>
+                    <option value="unlimitedplus">NHS Unlimited Choice+</option>
+                    <option value="2for1">2 for 1 Offer</option>
+                    <option value="reglaze2for1">2 for 1 Reglaze Offer</option>
+                    <option value="goldenticket">Golden Ticket (50%)</option>
+                    <option value="discount40">£40 Off Upgrades</option>
+                    <option value="student">Student Discount (25%)</option>
+                    <option value="over60">Over 60s (20%)</option>
+                </select>
+                
+                <p style="font-size:0.75rem; font-weight:bold; margin: 10px 0 5px 0;">Vouchers & Supplements</p>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px;">
+                    <select id="voucher-0" onchange="renderAll()" class="input-field" style="margin:0;"></select>
+                    <select id="voucher-1" onchange="renderAll()" class="input-field" style="margin:0;"></select>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+                    <button id="supp-complex" class="btn btn-supp" onclick="toggleSupp('complex')">Complex</button>
+                    <button id="supp-tint" class="btn btn-supp" onclick="toggleSupp('tint')">Tint</button>
+                    <button id="supp-prism" class="btn btn-supp" onclick="toggleSupp('prism')">Prism</button>
+                </div>
+            </div>
+            
+            <div id="basket-details" style="margin-top:15px;"></div>
+            <div id="savings-box"></div>
+            <div class="total-row"><span>Total</span><span id="grand-total">£0.00</span></div>
+            <textarea id="dispensing-notes" class="input-field" style="margin-top:15px; height:80px;" placeholder="Dispensing Notes..."></textarea>
+            <button id="print-btn" class="btn btn-print no-print" onclick="window.print()">📄 Save as PDF / Print</button>
+            <button class="btn btn-dark no-print" style="background:#64748b" onclick="resetAll()">Clear All</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
