@@ -1,0 +1,29 @@
+:root { 
+    --primary: #2c3e50; 
+    --accent: #18995C; /* New Brand Green */
+    --light: #f8fafc; 
+    --dark: #1e293b; 
+    --border: #e2e8f0; 
+    --error: #ef4444;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Update selected state for better contrast with the new green */
+.option-card.selected { 
+    border-color: var(--accent); 
+    background: #f0fdf9; /* Light mint tint */
+    box-shadow: 0 0 0 1px var(--accent); 
+}
+
+/* Ensure savings badge remains legible and themed */
+.savings-badge { 
+    background: #ecfdf5; 
+    border: 1px solid #a7f3d0; 
+    color: #065f46; 
+    padding: 10px; 
+    border-radius: 10px;
+    margin: 10px 0; 
+    font-weight: bold; 
+    font-size: 0.85rem; 
+    text-align: center; 
+}
